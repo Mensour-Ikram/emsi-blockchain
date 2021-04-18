@@ -14,3 +14,4 @@ block_t *block_create(block_t const *prev, int8_t const *data,
 	memcpy(&(block->info.prev_hash), prev->hash, SHA256_DIGEST_LENGTH);
 	return (block);
 }
+

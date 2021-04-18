@@ -30,3 +30,4 @@ blockchain_t *blockchain_create(void)
 	chain->chain = list;
 	return (chain);
 }
+
