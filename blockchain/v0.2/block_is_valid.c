@@ -1,4 +1,5 @@
 #include "blockchain.h"
+
 int block_is_valid(block_t const *block, block_t const *prev_block)
 {
 uint8_t hash_buffer[SHA256_DIGEST_LENGTH] = {0};

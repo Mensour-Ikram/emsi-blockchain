@@ -1,4 +1,4 @@
-nclude "blockchain.h"
+#include "blockchain.h"
 
 /**
 * block_mine - mine block
