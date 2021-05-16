@@ -1,34 +1,33 @@
+#include<stdio.h>
 #include "blockchain.h"
 
-static uint32_t compute_difficulty(uint8_t const hash[SHA256_DIGEST_LENGTH])
-{
-	const uint8_t *ptr = hash;
-	uint32_t difficulty = 0;
-	int i = 0;
 
-	while (ptr < hash + SHA256_DIGEST_LENGTH)
-	{
-		for (i = 7; i >= 0; i -= 1)
-		{
-			if ((*ptr >> i) & 1)
-				return (difficulty);
-			difficulty += 1;
-		}
-		ptr += 1;
-	}
-	return (difficulty);
+
+int hash_matches_difficulty(uint8_t const hash[SHA256_DIGEST_LENGTH],
+uint32_t difficulty)
+{
+int i = 0, bit = 0, one_found = 0, copy_difficulty = 0;
+
+copy_difficulty = difficulty;
+for (i = 0; i < SHA256_DIGEST_LENGTH; i++)
+{
+for (bit = 7; bit >= 0; bit--)
+{
+if (hash[i] & 1 << bit)
+{
+one_found = 1;
+break;
 }
-
-/**
- * hash_matches_difficulty - check if a given hash matches a given difficulty
- *
- * @hash: pointer to the hash to check
- * @difficulty: minimum difficulty the hash must match
- *
- * Return: If @difficulty is matched, return 1. Otherwise, return 0.
- */
-int hash_matches_difficulty(
-	uint8_t const hash[SHA256_DIGEST_LENGTH], uint32_t difficulty)
+copy_difficulty--;
+}
+if (one_found == 1)
 {
-	return (hash ? compute_difficulty(hash) >= difficulty : 0);
+break;
+}
+}
+if (copy_difficulty <= 0)
+{
+return (1);
+}
+return (0);
 }
