@@ -24,3 +24,4 @@ if (!hash_matches_difficulty(block->hash, block->info.difficulty))
 return (1);
 return (0);
 }
+
