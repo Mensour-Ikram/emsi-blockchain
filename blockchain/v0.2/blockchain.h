@@ -13,6 +13,11 @@
 
 #define BLOCKCHAIN_DATA_MAX 1024
 #define UNUSED(x) (void)(x)
+#define BLOCK_GENERATION_INTERVAL						\
+	1
+
+#define DIFFICULTY_ADJUSTMENT_INTERVAL						\
+	5
 
 
 #define GENESIS_BLOCK { \
