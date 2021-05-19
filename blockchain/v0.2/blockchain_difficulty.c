@@ -1,4 +1,9 @@
 #include "blockchain.h"
+/**
+* blockchain_difficulty - computes difficulty
+* @blockchain: points to the blockchain to analyse
+* Return: block difficulty
+*/
 uint32_t blockchain_difficulty(blockchain_t const *blockchain)
 {
 block_t *l_block = NULL;
