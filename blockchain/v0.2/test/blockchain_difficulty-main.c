@@ -16,7 +16,7 @@ usleep(300000); /* Simulate block mining ... */
 block = block_create(prev, (int8_t *)s, (uint32_t)strlen(s));
 
 block->info.difficulty = blockchain_difficulty(blockchain);
-
+                     
 block_hash(block, block->hash);
 llist_add_node(blockchain->chain, block, ADD_NODE_REAR);
 
